@@ -32,6 +32,26 @@ const menuData = {
   ]
 }
 
+const photos = [
+  '/images/photo-1.jpg',
+  '/images/photo-2.jpg',
+  '/images/photo-3.jpg',
+  '/images/photo-4.jpg',
+  '/images/photo-5.jpg',
+  '/images/photo-6.jpg',
+  '/images/photo-7.jpg',
+  '/images/photo-8.jpg',
+  '/images/photo-9.jpg',
+  '/images/photo-10.jpg',
+  '/images/photo-11.jpg',
+  '/images/photo-12.jpg',
+  '/images/photo-13.jpg',
+  '/images/photo-14.jpg',
+  '/images/photo-15.jpg',
+  '/images/photo-16.jpg',
+  '/images/photo-17.jpg',
+]
+
 const testimonials = [
   {
     quote: "The most authentic Thai food I've found in Versailles. The Pad Thai was incredible — you can tell everything is fresh and made with care.",
@@ -105,8 +125,12 @@ function App() {
       </header>
 
       {/* Hero - ATTENTION */}
-      <section className="bg-gradient-to-br from-[#E65100] to-[#FF8F00] text-white py-24">
-        <div className="container text-center">
+      <section 
+        className="relative bg-gradient-to-br from-[#E65100]/95 to-[#FF8F00]/90 text-white py-32 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${photos[0]})` }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-br from-[#E65100]/85 to-[#FF8F00]/80"></div>
+        <div className="container relative text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6 max-w-3xl mx-auto">
             Save Your Table — Authentic Thai Cuisine in Versailles
           </h1>
@@ -191,6 +215,31 @@ function App() {
           <div className="text-center mt-10">
             <a href="#menu" className="btn-secondary text-lg">
               Discover Our Dishes
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Photo Gallery */}
+      <section className="section bg-white">
+        <div className="container">
+          <h2 className="text-3xl font-bold text-center mb-4">Our Dishes</h2>
+          <p className="text-center text-gray-600 mb-10">A visual journey through our authentic Thai cuisine</p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {photos.slice(1, 13).map((photo, idx) => (
+              <div key={idx} className="relative overflow-hidden rounded-lg aspect-square group">
+                <img 
+                  src={photo} 
+                  alt={`Nakhon Thai dish ${idx + 1}`}
+                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors"></div>
+              </div>
+            ))}
+          </div>
+          <div className="text-center mt-8">
+            <a href="#contact" className="btn-primary">
+              Reserve Your Table
             </a>
           </div>
         </div>
