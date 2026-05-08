@@ -93,10 +93,16 @@ const faqs = [
   }
 ]
 
+const languages = [
+  { code: 'FR', name: 'FR' },
+  { code: 'EN', name: 'EN' },
+]
+
 function App() {
   const [activeCategory, setActiveCategory] = useState('mains')
   const [dietFilter, setDietFilter] = useState(null)
   const [openFaq, setOpenFaq] = useState(null)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   const filteredMenu = Object.entries(menuData).reduce((acc, [category, items]) => {
     if (dietFilter) {
@@ -114,13 +120,56 @@ function App() {
         <div className="container">
           <nav className="flex items-center justify-between py-4">
             <a href="/" className="text-2xl font-bold text-[#E65100]">Nakhon Thai</a>
+            
+            {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-6">
               <a href="#menu" className="text-gray-700 hover:text-[#E65100]">Menu</a>
-              <a href="#about" className="text-gray-700 hover:text-[#E65100]">À propos</a>
+              <a href="#gallery" className="text-gray-700 hover:text-[#E65100]">Photos</a>
               <a href="#contact" className="text-gray-700 hover:text-[#E65100]">Contact</a>
-              <a href="#contact" className="btn-primary">Réserver</a>
+              <a 
+                href="https://bookings.zenchef.com/363675?host=www.nakhonthaiversailles.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="btn-primary"
+              >
+                Réserver
+              </a>
             </div>
+
+            {/* Mobile Menu Button */}
+            <button 
+              className="md:hidden p-2"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                {mobileMenuOpen ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
+            </button>
           </nav>
+
+          {/* Mobile Navigation */}
+          {mobileMenuOpen && (
+            <div className="md:hidden py-4 border-t">
+              <div className="flex flex-col gap-4">
+                <a href="#menu" className="text-gray-700 hover:text-[#E65100]" onClick={() => setMobileMenuOpen(false)}>Menu</a>
+                <a href="#gallery" className="text-gray-700 hover:text-[#E65100]" onClick={() => setMobileMenuOpen(false)}>Photos</a>
+                <a href="#contact" className="text-gray-700 hover:text-[#E65100]" onClick={() => setMobileMenuOpen(false)}>Contact</a>
+                <a 
+                  href="https://bookings.zenchef.com/363675?host=www.nakhonthaiversailles.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="btn-primary text-center"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Réserver
+                </a>
+              </div>
+            </div>
+          )}
         </div>
       </header>
 
@@ -139,7 +188,12 @@ function App() {
             Our family-run restaurant brings you recipes crafted from fresh ingredients.
           </p>
           <div className="flex flex-wrap justify-center gap-4 mb-8">
-            <a href="#contact" className="btn-primary bg-white text-[#E65100] hover:bg-gray-100 text-lg px-8 py-4">
+            <a 
+              href="https://bookings.zenchef.com/363675?host=www.nakhonthaiversailles.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="btn-primary bg-white text-[#E65100] hover:bg-gray-100 text-lg px-8 py-4"
+            >
               Reserve My Table Now
             </a>
             <a href="#menu" className="btn-primary bg-transparent border-2 border-white hover:bg-white/10 text-white text-lg px-8 py-4">
@@ -221,7 +275,7 @@ function App() {
       </section>
 
       {/* Photo Gallery */}
-      <section className="section bg-white">
+      <section id="gallery" className="section bg-white">
         <div className="container">
           <h2 className="text-3xl font-bold text-center mb-4">Our Dishes</h2>
           <p className="text-center text-gray-600 mb-10">A visual journey through our authentic Thai cuisine</p>
@@ -436,39 +490,103 @@ function App() {
               </a>
             </div>
             <div className="card h-full bg-white text-gray-800">
-              <h3 className="text-xl font-semibold mb-4">Send Us a Message</h3>
+              <h3 className="text-xl font-semibold mb-4">Réservation en ligne</h3>
               <p className="text-gray-600 text-sm mb-4">
-                No complicated signup. Just send us a message and we'll confirm your table.
+                Cliquez ci-dessous pour réserver votre table directement sur notre système de réservation.
               </p>
-              <form className="space-y-4">
-                <input 
-                  type="text" 
-                  placeholder="Your name" 
-                  className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#E65100]"
-                />
-                <input 
-                  type="tel" 
-                  placeholder="Phone number" 
-                  className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#E65100]"
-                />
-                <input 
-                  type="email" 
-                  placeholder="Your email" 
-                  className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#E65100]"
-                />
-                <textarea 
-                  placeholder="Preferred date & time, number of guests..." 
-                  rows="3"
-                  className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#E65100]"
-                ></textarea>
-                <button type="submit" className="btn-primary w-full">
-                  Send Reservation Request
-                </button>
-              </form>
+              <a 
+                href="https://bookings.zenchef.com/363675?host=www.nakhonthaiversailles.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="btn-primary w-full block text-center"
+              >
+                Réserver en ligne
+              </a>
+              <div className="mt-4 pt-4 border-t">
+                <p className="text-gray-600 text-sm mb-2">Ou envoyez-nous un message:</p>
+                <form className="space-y-4">
+                  <input 
+                    type="text" 
+                    placeholder="Votre nom" 
+                    className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#E65100]"
+                  />
+                  <input 
+                    type="email" 
+                    placeholder="Votre email" 
+                    className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#E65100]"
+                  />
+                  <textarea 
+                    placeholder="Votre message..." 
+                    rows="3"
+                    className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#E65100]"
+                  ></textarea>
+                  <button type="submit" className="btn-secondary w-full">
+                    Envoyer
+                  </button>
+                </form>
+              </div>
             </div>
           </div>
           <div className="text-center mt-8 text-sm opacity-80">
             <p>🛡️ No cancellation fees. Change your reservation anytime.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Newsletter */}
+      <section className="section bg-[#FAFAFA]">
+        <div className="container text-center">
+          <h2 className="text-3xl font-bold mb-4">Restez informé</h2>
+          <p className="text-gray-600 mb-6 max-w-xl mx-auto">
+            Inscrivez-vous à notre newsletter pour recevoir nos offres spéciales et actualités.
+          </p>
+          <form className="max-w-md mx-auto flex gap-2">
+            <input 
+              type="email" 
+              placeholder="Votre email" 
+              className="flex-1 p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#E65100]"
+            />
+            <button type="submit" className="btn-primary whitespace-nowrap">
+              S'inscrire
+            </button>
+          </form>
+          <p className="text-gray-500 text-xs mt-4">
+            En vous inscrivant, vous acceptez de recevoir des communications de notre part.
+          </p>
+        </div>
+      </section>
+
+      {/* Instagram Preview */}
+      <section className="section bg-white">
+        <div className="container">
+          <h2 className="text-3xl font-bold text-center mb-4">Suivez-nous sur Instagram</h2>
+          <p className="text-center text-gray-600 mb-8">@nakhonthai_versailles</p>
+          <div className="grid grid-cols-4 gap-2 max-w-2xl mx-auto">
+            {photos.slice(0, 8).map((photo, idx) => (
+              <a 
+                key={idx}
+                href="https://www.instagram.com/nakhonthai_versailles/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="block aspect-square overflow-hidden rounded-lg"
+              >
+                <img 
+                  src={photo} 
+                  alt="Instagram post"
+                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+                />
+              </a>
+            ))}
+          </div>
+          <div className="text-center mt-6">
+            <a 
+              href="https://www.instagram.com/nakhonthai_versailles/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-[#E65100] font-medium hover:underline"
+            >
+              Voir plus sur Instagram →
+            </a>
           </div>
         </div>
       </section>
@@ -494,8 +612,17 @@ function App() {
               Instagram
             </a>
           </div>
-          <p className="text-gray-400 text-sm mb-4">
+          <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-gray-400 mb-4">
+            <a href="#" className="hover:text-white">Mentions légales</a>
+            <a href="#" className="hover:text-white">Politique de confidentialité</a>
+            <a href="#" className="hover:text-white">Politique de cookies</a>
+            <a href="#" className="hover:text-white">Accessibilité</a>
+          </div>
+          <p className="text-gray-500 text-sm">
             © 2026 Nakhon Thai — Restaurant traditionnel à Versailles
+          </p>
+          <p className="text-gray-600 text-xs mt-2">
+            Créé avec Zenchef
           </p>
         </div>
       </footer>
