@@ -2,33 +2,33 @@ import { useState } from 'react'
 import './App.css'
 
 const menuData = {
-  starters: [
-    { name: "Soupe Tom Yum", description: "Soup with lemongrass, galangal, mushrooms and chili", price: "8,50 €", tags: ["S"] },
-    { name: "Soupe Tom Kha", description: "Coconut milk soup with galangal and mushrooms", price: "8,50 €", tags: [] },
-    { name: "Nem", description: "Crispy spring rolls with vegetables", price: "7,50 €", tags: ["V"] },
-    { name: "Satay", description: "Grilled chicken skewers with peanut sauce", price: "9,00 €", tags: [] },
-    { name: "Papaya Salad", description: "Green papaya salad with tomatoes and peanuts", price: "9,50 €", tags: ["V", "S"] },
+  entrées: [
+    { name: "Soupe Tom Yum", description: "Soupe à la citronnelle, galanga, champignons et piment", price: "8,50 €", tags: ["S"] },
+    { name: "Soupe Tom Kha", description: "Soupe au lait de coco avec galanga et champignons", price: "8,50 €", tags: [] },
+    { name: "Nem", description: "Rouleaux de printemps croustillants aux légumes", price: "7,50 €", tags: ["V"] },
+    { name: "Satay", description: "Brochettes de poulet grillé, sauce cacahuète", price: "9,00 €", tags: [] },
+    { name: "Salade de Papaye", description: "Salade de papaye verte aux tomates et cacahuètes", price: "9,50 €", tags: ["V", "S"] },
   ],
-  mains: [
-    { name: "Pad Thai", description: "Stir-fried rice noodles with shrimp, eggs and peanuts", price: "16,50 €", tags: [] },
-    { name: "Massaman Curry", description: "Curry with potatoes, peanuts and coconut milk", price: "15,50 €", tags: [] },
-    { name: "Green Curry", description: "Thai green curry with bamboo shoots and Thai basil", price: "15,50 €", tags: ["S"] },
-    { name: "Red Curry", description: "Thai red curry with vegetables", price: "15,00 €", tags: ["S"] },
-    { name: "Basil Chicken", description: "Stir-fried chicken with holy basil and chili", price: "14,50 €", tags: ["S"] },
-    { name: "Pad See Ew", description: "Stir-fried rice noodles with soy sauce", price: "14,50 €", tags: ["V"] },
-    { name: "Thai Fried Rice", description: "Fried rice with vegetables and choice of meat", price: "13,50 €", tags: [] },
-    { name: "Tiger Prawns", description: "Grilled tiger prawns with garlic sauce", price: "22,00 €", tags: [] },
+  plats: [
+    { name: "Pad Thaï", description: "Nouilles de riz sautées aux crevettes, œufs et cacahuètes", price: "16,50 €", tags: [] },
+    { name: "Curry Massaman", description: "Curry aux pommes de terre, cacahuètes et lait de coco", price: "15,50 €", tags: [] },
+    { name: "Curry Vert", description: "Curry vert thaï aux pousses de bambou et basilic thaï", price: "15,50 €", tags: ["S"] },
+    { name: "Curry Rouge", description: "Curry rouge thaï aux légumes", price: "15,00 €", tags: ["S"] },
+    { name: "Poulet au Basilic", description: "Poulet sauté au basilic sacré et piment", price: "14,50 €", tags: ["S"] },
+    { name: "Pad See Ew", description: "Nouilles de riz sautées à la sauce soja", price: "14,50 €", tags: ["V"] },
+    { name: "Riz Sauté Thaï", description: "Riz sauté aux légumes avec viande au choix", price: "13,50 €", tags: [] },
+    { name: "Gambas Tigrées", description: "Gambas tigrées grillées, sauce à l'ail", price: "22,00 €", tags: [] },
   ],
   desserts: [
-    { name: "Mango Sticky Rice", description: "Sweet coconut sticky rice with fresh mango", price: "8,50 €", tags: ["V"] },
-    { name: "Coconut Ice Cream", description: "Home-made coconut ice cream", price: "6,00 €", tags: ["V"] },
-    { name: "Thai Tea Crème Brûlée", description: "Thai tea flavored custard with caramelized sugar", price: "7,50 €", tags: ["V"] },
+    { name: "Riz Gluant à la Mangue", description: "Riz gluant à la noix de coco et mangue fraîche", price: "8,50 €", tags: ["V"] },
+    { name: "Glace à la Noix de Coco", description: "Glace maison à la noix de coco", price: "6,00 €", tags: ["V"] },
+    { name: "Crème Brûlée au Thé Thaï", description: "Crème parfumée au thé thaï avec sucre caramélisé", price: "7,50 €", tags: ["V"] },
   ],
-  drinks: [
-    { name: "Thai Tea", description: "Sweet Thai iced tea", price: "4,50 €", tags: ["V"] },
-    { name: "Thai Coffee", description: "Thai style iced coffee", price: "4,50 €", tags: ["V"] },
-    { name: "Fresh Coconut", description: "Fresh coconut water", price: "5,00 €", tags: ["V"] },
-    { name: "Lemongrass Tea", description: "Hot or iced lemongrass infusion", price: "4,00 €", tags: ["V"] },
+  boissons: [
+    { name: "Thé Thaï", description: "Thé glacé thaï sucré", price: "4,50 €", tags: ["V"] },
+    { name: "Café Thaï", description: "Café glacé à la thaïlandaise", price: "4,50 €", tags: ["V"] },
+    { name: "Noix de Coco Fraîche", description: "Eau de coco fraîche", price: "5,00 €", tags: ["V"] },
+    { name: "Infusion Citronnelle", description: "Infusion de citronnelle chaude ou glacée", price: "4,00 €", tags: ["V"] },
   ]
 }
 
@@ -37,42 +37,42 @@ const photos = Array.from({ length: 17 }, (_, i) => `${BASE}images/photo-${i + 1
 
 const testimonials = [
   {
-    quote: "The most authentic Thai food I've found in Versailles. The Pad Thai was incredible — you can tell everything is fresh and made with care.",
+    quote: "La cuisine thaï la plus authentique que j'ai trouvée à Versailles. Le Pad Thaï était incroyable — on sent que tout est frais et fait avec soin.",
     name: "Marie L.",
     role: "Versailles"
   },
   {
-    quote: "Finally a place that gets Thai cuisine right! The Green Curry has the perfect balance of spice. We're now regulars.",
+    quote: "Enfin un endroit qui maîtrise la cuisine thaïlandaise ! Le curry vert a un équilibre parfait entre épices et saveurs. Nous sommes devenus des habitués.",
     name: "Jean-Pierre D.",
-    role: "Local Resident"
+    role: "Habitant local"
   },
   {
-    quote: "A real gem in Versailles. We took our tourist friends here and everyone loved it.",
+    quote: "Un vrai bijou à Versailles. Nous y avons emmené nos amis touristes et tout le monde a adoré.",
     name: "Sophie M.",
-    role: "TripAdvisor Review"
+    role: "Avis TripAdvisor"
   }
 ]
 
 const faqs = [
   {
-    question: "Do you accommodate dietary restrictions?",
-    answer: "Absolutely. We offer vegetarian options and can adjust spice levels. Just let us know when you reserve."
+    question: "Proposez-vous des options pour régimes spéciaux ?",
+    answer: "Absolument. Nous proposons des options végétariennes et pouvons ajuster le niveau d'épices. Précisez-le simplement lors de votre réservation."
   },
   {
-    question: "Is there parking nearby?",
-    answer: "Yes! Street parking is available, and we're just 5 minutes from Versailles Château train station."
+    question: "Y a-t-il un parking à proximité ?",
+    answer: "Oui ! Du stationnement dans la rue est disponible, et nous sommes à seulement 5 minutes de la gare Versailles Château."
   },
   {
-    question: "Can I bring my family?",
-    answer: "We welcome families with children. Our menu has options everyone will love."
+    question: "Puis-je venir en famille ?",
+    answer: "Nous accueillons les familles avec enfants. Notre menu propose des options qui plairont à tous."
   },
   {
-    question: "Do you take walk-ins?",
-    answer: "We accept walk-ins when we have availability, but we recommend reserving — especially weekends!"
+    question: "Acceptez-vous les clients sans réservation ?",
+    answer: "Nous acceptons les clients sans réservation selon disponibilité, mais nous recommandons de réserver — surtout le week-end !"
   },
   {
-    question: "What are your opening hours?",
-    answer: "Monday-Saturday: 12:00-14:30 & 19:00-22:30. Closed Sunday."
+    question: "Quels sont vos horaires d'ouverture ?",
+    answer: "Lundi-Samedi : 12h00-14h30 & 19h00-22h30. Fermé le dimanche."
   }
 ]
 
@@ -82,7 +82,7 @@ const languages = [
 ]
 
 function App() {
-  const [activeCategory, setActiveCategory] = useState('mains')
+  const [activeCategory, setActiveCategory] = useState('plats')
   const [dietFilter, setDietFilter] = useState(null)
   const [openFaq, setOpenFaq] = useState(null)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -164,11 +164,11 @@ function App() {
         <div className="absolute inset-0 bg-gradient-to-br from-[#E65100]/85 to-[#FF8F00]/80"></div>
         <div className="container relative text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6 max-w-3xl mx-auto">
-            Save Your Table — Authentic Thai Cuisine in Versailles
+            Réservez votre table — Cuisine thaïlandaise authentique à Versailles
           </h1>
           <p className="text-xl md:text-2xl mb-4 opacity-95 max-w-2xl mx-auto">
-            Experience the bold flavors of Thailand without leaving France. 
-            Our family-run restaurant brings you recipes crafted from fresh ingredients.
+            Découvrez les saveurs intenses de la Thaïlande sans quitter la France.
+            Notre restaurant familial vous propose des recettes élaborées à partir d'ingrédients frais.
           </p>
           <div className="flex flex-wrap justify-center gap-4 mb-8">
             <a 
@@ -177,18 +177,18 @@ function App() {
               rel="noopener noreferrer"
               className="btn-primary bg-white text-[#E65100] hover:bg-gray-100 text-lg px-8 py-4"
             >
-              Reserve My Table Now
+              Réserver ma table
             </a>
             <a href="#menu" className="btn-primary bg-transparent border-2 border-white hover:bg-white/10 text-white text-lg px-8 py-4">
-              View Our Menu
+              Voir notre menu
             </a>
           </div>
           <div className="flex items-center justify-center gap-4 text-sm opacity-90">
-            <span className="flex items-center gap-1">⭐ 4.8★ (127 reviews)</span>
+            <span className="flex items-center gap-1">⭐ 4,8★ (127 avis)</span>
             <span>•</span>
-            <span>Opened April 2023</span>
+            <span>Ouvert depuis avril 2023</span>
             <span>•</span>
-            <span>Family-owned in Versailles</span>
+            <span>Restaurant familial à Versailles</span>
           </div>
         </div>
       </section>
@@ -197,21 +197,21 @@ function App() {
       <section className="section bg-white">
         <div className="container">
           <div className="max-w-2xl mx-auto text-center">
-            <h2 className="text-3xl font-bold text-[#1A1A1A] mb-6">You've Been Craving Something Different</h2>
+            <h2 className="text-3xl font-bold text-[#1A1A1A] mb-6">Vous avez envie de quelque chose de différent</h2>
             <p className="text-lg text-gray-700 mb-4">
-              Not another generic French bistro. Not a chain restaurant serving pre-packaged meals. 
-              You're looking for <strong>bold, authentic flavors</strong> — real Thai cuisine that transports you to the streets of Bangkok.
+              Pas un énième bistrot français banal. Pas un restaurant de chaîne servant des plats préparés.
+              Vous cherchez des <strong>saveurs intenses et authentiques</strong> — la vraie cuisine thaï qui vous transporte dans les rues de Bangkok.
             </p>
             <p className="text-lg text-gray-700 mb-4">
-              But every time you search "Thai restaurant near me," you get:
+              Mais à chaque fois que vous cherchez "restaurant thaï près de moi", vous trouvez :
             </p>
             <ul className="text-left text-gray-600 space-y-2 max-w-md mx-auto">
-              <li>• Frozen pad thai from delivery apps</li>
-              <li>• Sweet-and-sour dishes watered down for French palates</li>
-              <li>• Restaurants that call themselves "Thai" but serve fusion</li>
+              <li>• Du pad thaï surgelé livré par applications</li>
+              <li>• Des plats aigre-doux édulcorés pour le palais français</li>
+              <li>• Des restaurants qui se disent "thaï" mais servent de la fusion</li>
             </ul>
             <p className="text-xl font-medium text-[#E65100] mt-6">
-              You're tired of compromise. You want the real deal.
+              Vous en avez assez des compromis. Vous voulez de l'authentique.
             </p>
           </div>
         </div>
@@ -220,38 +220,38 @@ function App() {
       {/* Solution Section - DESIRE */}
       <section id="about" className="section bg-[#FAFAFA]">
         <div className="container">
-          <h2 className="text-3xl font-bold text-center mb-12">You Don't Have to Choose Between Authentic and Accessible</h2>
+          <h2 className="text-3xl font-bold text-center mb-12">Vous n'avez pas à choisir entre authenticité et accessibilité</h2>
           <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             <div className="card">
               <div className="text-4xl mb-4">🥢</div>
-              <h3 className="text-xl font-semibold text-[#2E7D32] mb-3">Fresh Ingredients, Made On-Site</h3>
+              <h3 className="text-xl font-semibold text-[#2E7D32] mb-3">Ingrédients frais, faits sur place</h3>
               <p className="text-gray-600">
-                Every dish is crafted daily with fresh vegetables, herbs, and quality proteins. 
-                No frozen pre-made sauces. No shortcuts.
+                Chaque plat est préparé chaque jour avec des légumes frais, des herbes et des protéines de qualité.
+                Pas de sauces surgelées. Pas de raccourcis.
               </p>
             </div>
             <div className="card">
               <div className="text-4xl mb-4">🌶️</div>
-              <h3 className="text-xl font-semibold text-[#2E7D32] mb-3">Bold, Authentic Flavors</h3>
+              <h3 className="text-xl font-semibold text-[#2E7D32] mb-3">Saveurs intenses et authentiques</h3>
               <p className="text-gray-600">
-                Our recipes come from family traditions, not factory formulas. 
-                From the tangy Tom Yum soup to the rich Massaman curry, 
-                each dish carries the true taste of Thailand.
+                Nos recettes viennent de traditions familiales, pas de formules industrielles.
+                De la soupe Tom Yum acidulée au riche curry Massaman,
+                chaque plat porte le vrai goût de la Thaïlande.
               </p>
             </div>
             <div className="card">
               <div className="text-4xl mb-4">🍽️</div>
-              <h3 className="text-xl font-semibold text-[#2E7D32] mb-3">Warm, Inviting Atmosphere</h3>
+              <h3 className="text-xl font-semibold text-[#2E7D32] mb-3">Atmosphère chaleureuse et conviviale</h3>
               <p className="text-gray-600">
-                A family restaurant where the team remembers your name. 
-                Whether you're celebrating a special occasion or grabbing a casual dinner, 
-                you feel at home.
+                Un restaurant familial où l'équipe se souvient de votre prénom.
+                Que vous fêtiez une occasion spéciale ou veniez pour un dîner simple,
+                vous vous sentez chez vous.
               </p>
             </div>
           </div>
           <div className="text-center mt-10">
             <a href="#menu" className="btn-secondary text-lg">
-              Discover Our Dishes
+              Découvrir nos plats
             </a>
           </div>
         </div>
@@ -260,14 +260,14 @@ function App() {
       {/* Photo Gallery */}
       <section id="gallery" className="section bg-white">
         <div className="container">
-          <h2 className="text-3xl font-bold text-center mb-4">Our Dishes</h2>
-          <p className="text-center text-gray-600 mb-10">A visual journey through our authentic Thai cuisine</p>
+          <h2 className="text-3xl font-bold text-center mb-4">Nos plats</h2>
+          <p className="text-center text-gray-600 mb-10">Un voyage visuel à travers notre cuisine thaï authentique</p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {photos.slice(1, 13).map((photo, idx) => (
               <div key={idx} className="relative overflow-hidden rounded-lg aspect-square group">
                 <img 
                   src={photo} 
-                  alt={`Nakhon Thai dish ${idx + 1}`}
+                  alt={`Plat Nakhon Thai ${idx + 1}`}
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors"></div>
@@ -276,7 +276,7 @@ function App() {
           </div>
           <div className="text-center mt-8">
             <a href="#contact" className="btn-primary">
-              Reserve Your Table
+              Réserver votre table
             </a>
           </div>
         </div>
@@ -404,7 +404,7 @@ function App() {
       {/* Social Proof */}
       <section className="section bg-white">
         <div className="container">
-          <h2 className="text-3xl font-bold text-center mb-12">What Our Guests Say</h2>
+          <h2 className="text-3xl font-bold text-center mb-12">Ce que disent nos clients</h2>
           <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             {testimonials.map((testimonial, idx) => (
               <div key={idx} className="card">
@@ -444,32 +444,32 @@ function App() {
       {/* Contact - ACTION */}
       <section id="contact" className="section bg-gradient-to-br from-[#E65100] to-[#FF8F00] text-white">
         <div className="container">
-          <h2 className="text-3xl font-bold text-center mb-4">Reserve Your Table Now</h2>
+          <h2 className="text-3xl font-bold text-center mb-4">Réservez votre table maintenant</h2>
           <p className="text-center text-xl opacity-90 mb-8">
-            The best Thai table in Versailles won't stay empty for long. Tables fill fast on weekends!
+            La meilleure table thaï de Versailles ne restera pas vide longtemps. Les tables se remplissent vite le week-end !
           </p>
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <div className="card h-full bg-white text-gray-800">
-              <h3 className="text-xl font-semibold mb-4">Visit Us</h3>
+              <h3 className="text-xl font-semibold mb-4">Nous rendre visite</h3>
               <p className="text-gray-700 mb-2">
-                <strong>Address:</strong><br/>
+                <strong>Adresse :</strong><br/>
                 4 Rue Philippe de Dangeau<br/>
                 78000 Versailles, France
               </p>
               <p className="text-gray-700 mb-4">
-                <strong>Phone:</strong><br/>
+                <strong>Téléphone :</strong><br/>
                 <a href="tel:0977462207" className="text-[#E65100] hover:underline text-lg">09 77 46 22 07</a>
               </p>
               <p className="text-gray-600 text-sm mb-4">
-                We answer within 3 rings!
+                Nous répondons en moins de 3 sonneries !
               </p>
-              <a 
+              <a
                 href="https://www.google.com/maps/dir/?api=1&destination=Nakhon+Thai+4+Rue+Philippe+de+Dangeau++78000+Versailles+fr"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-secondary inline-block"
               >
-                Get Directions
+                Itinéraire
               </a>
             </div>
             <div className="card h-full bg-white text-gray-800">
@@ -511,7 +511,7 @@ function App() {
             </div>
           </div>
           <div className="text-center mt-8 text-sm opacity-80">
-            <p>🛡️ No cancellation fees. Change your reservation anytime.</p>
+            <p>🛡️ Aucun frais d'annulation. Modifiez votre réservation à tout moment.</p>
           </div>
         </div>
       </section>
@@ -555,7 +555,7 @@ function App() {
               >
                 <img 
                   src={photo} 
-                  alt="Instagram post"
+                  alt="Publication Instagram"
                   className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
                 />
               </a>
@@ -605,7 +605,7 @@ function App() {
             © 2026 Nakhon Thai — Restaurant traditionnel à Versailles
           </p>
           <p className="text-gray-600 text-xs mt-2">
-            Créé avec Zenchef
+            Créé avec <a href="https://bettersite.dev" target="_blank" rel="noopener noreferrer" className="hover:text-white">bettersite.dev</a>
           </p>
         </div>
       </footer>
